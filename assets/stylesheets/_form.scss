@@ -1,0 +1,281 @@
+$borderRadius: 3px;
+
+/* Tool class */
+.form-add-on {
+    display: inline-block;
+    vertical-align: top;
+
+    &:after {
+        content: "";
+        display: block;
+
+        min-width: 16px;
+        height: 20px;
+        padding: 2px 4px;
+
+        border: 1px solid #acacac;
+
+        background-color: #E6E6E6;
+        background-repeat: no-repeat;
+        background-position: center center;
+
+    }
+
+    &.selected:after {
+        background-color: #c8c8c8;
+    }
+    &.icon-list:after {
+        background-image: url("../images/btn_list.png");
+    }
+
+    &.icon-datepicker:after {
+        background-image: url("../images/button_datePicker01.png");
+    }
+
+    &.icon-natural-entity:after {
+        background-image: url("../images/user2.png");
+    }
+    &.icon-company:after {
+        background-image: url("../images/btn_company.png");
+    }
+}
+
+.form-input.input-inline {
+    display: table;
+    margin-bottom: 10px;
+    table-layout: fixed;
+
+    label, .content-label, .content-value {
+        display: table-cell;
+        padding-top:4px;
+        vertical-align: top;
+    }
+
+    .content-label {
+        width: 200px;
+    }
+
+    input {
+        vertical-align: top;
+    }
+}
+
+.form-input.input-block {
+    display: inline-block;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    label {
+        display: block;
+    }
+}
+
+.form-input {
+    input, select, textarea {
+        background-color: #fff;
+        border: 1px solid #acacac;
+
+        @include font(normal, 12px);
+
+        .borderradius & {
+            @extend .rounded-all;
+        }
+        .boxshadow & {
+            @include box-shadow(0 1px 1px rgba(0, 0, 0, 0.075) inset);
+        }
+        .csstransitions & {
+            transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+        }
+
+
+        &[disabled] {
+            background: #f5f5f5;
+            cursor: not-allowed;
+        }
+
+        &:focus {
+            border-color: #52A8EC;
+            outline: 0 none;
+
+            .boxshadow & {
+                @include box-shadow(0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6));
+            }
+        }
+    }
+}
+
+/* Radio button */
+.form-input.input-inline {
+    .radio-group .radio {
+        display: table-cell;
+
+        input {
+            display: none;
+        }
+
+        label {
+            @include button();
+            width: 74px;
+
+            .borderradius & {
+                @extend .rounded-right;
+            }
+        }
+
+        &:first-child {
+            label {
+                border-right: none;
+
+                .borderradius & {
+                    @extend .rounded-left;
+                }
+            }
+        }
+    }
+}
+
+/* input append */
+.form-input.input-append {
+    position: relative;
+
+    input[type="text"], input[type="password"] {
+        border-right: none;
+
+        .borderradius & {
+            @extend .rounded-left;
+        }
+    }
+
+    /* eraser : clear the input */
+    .eraser {
+        @include background(url(../images/input_reset.png) no-repeat center center);
+        height:  14px;
+        width: 15px;
+        padding-top: 11px;
+        float: right;
+        right: 40px;
+        display: block;
+        position: absolute;
+
+        .ie8 & {
+            right: 30px;
+            margin-top: 1px;
+        }
+    }
+
+    /* wrap the add-on */
+    .add-on {
+        @extend .form-add-on;
+        margin-left: -3px;
+
+        &:after {
+            .borderradius & {
+                @extend .rounded-right;
+            }
+        }
+    }
+}
+
+/* input prepend */
+.form-input.input-prepend {
+    .add-on-prepend {
+        margin-right: -4px;
+        @extend .form-add-on;
+        @include border-radius(3px 0 0 3px);
+    }
+}
+
+/**
+ *  Form element size
+ */
+.form-input label {
+    width: 180px;
+}
+
+input[type="text"], input[type="password"] {
+    padding: 2px;
+    height: 20px;
+    width: 200px;
+}
+
+input[type="submit"] {
+    height: auto;
+}
+
+select {
+    padding: 4px;
+    width: 206px;
+}
+
+textarea {
+    padding: 2px;
+    width: 200px;
+}
+
+.form-input input[type="text"],
+.form-input input[type="password"] {
+    width: 200px;
+}
+.input-prepend input[type="text"],
+.input-prepend input[type="password"],
+.input-append input[type="text"],
+.input-append input[type="password"] {
+    width: 176px;
+}
+
+.input-prepend.input-append input[type="text"],
+.input-prepend.input-append input[type="password"] {
+    width: 156px;
+}
+.input-prepend-2.input-append input[type="text"],
+.input-prepend-2.input-append input[type="password"] {
+    width: 126px;
+}
+
+/* Form status style (disabled, error ...) */
+.form-input.disbabled {
+    label {
+        color: #999999;
+    }
+}
+
+.form-input.error {
+    label {
+        color: $errorColor;
+    }
+
+    input[type="text"], input[type="password"], select, textarea {
+        border-color: $errorColor;
+
+
+        .boxshadow & {
+            @include box-shadow(0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px $errorColor);
+        }
+    }
+}
+
+.form-input .help-inline {
+    display: table-cell;
+    vertical-align: top;
+    padding: 2px 4px;
+    padding-top:4px;
+}
+
+.form-input .error-wrapper {
+    display: table-cell;
+    vertical-align: top;
+    padding: 2px 4px;
+    padding-top:4px;
+
+    color: red;
+}
+
+.actions {
+    @extend .align-right;
+    clear: both;
+    border-top: 1px solid #DDDDDD;
+    padding: 17px 0 18px 150px;
+    margin-top: 10px;
+}

@@ -1,0 +1,103 @@
+.ui-dialog {
+
+    // Overlay
+    &:before {
+        content: "";
+        position: fixed;
+        display: inherit;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: black;
+        @include opacity(0.5);
+    }
+
+    .ie8 &:before {
+        display: none; // Pb de positionnement IE, donc pas d'overlay
+    }
+
+    .ui-dialog-titlebar {
+        cursor: move;
+        @include background(url(../images/Bandeau_BG01.png) repeat top left);
+        @extend .rounded-top;
+        border: 1px solid #004d75;
+        color: white;
+        padding: .4em 1em;
+        line-height: 18px;
+        font-weight: 700;
+        position: relative; // Pour que l'image ne soit pas impacté par l'opacité du :before
+    }
+
+    .ui-loading {
+        background: white;
+        border: 1px solid #aaaaaa;
+        border-width: 0 1px 0 1px;
+        position: relative;
+    }
+
+    .ui-dialog-content {
+        background:  white;
+        border: 1px solid #aaaaaa;
+        border-width: 0 1px 1px 1px;
+        overflow: auto;
+        padding: .5em 1em;
+        position: relative;
+    }
+
+
+    .ui-dialog-titlebar-close  {
+        float: right;
+
+        .ui-icon {
+            @extend .image-replace;
+
+            padding-top: 16px;
+            width: 16px;
+            @include background(url(../images/close_off.png) top left);
+        }
+    }
+}
+
+/* modify form design */
+.ui-dialog form {
+    margin: 5px 0;
+}
+
+.ui-dialog .form-input.input-inline {
+    display: block;
+
+    input, select {
+        display: inline-block;
+    }
+    label {
+        display: inline-block;
+        width: 200px;
+    }
+
+    .help-inline {
+        display: block;
+    }
+    .error-wrapper {
+        display: block;
+        margin-left: 200px;
+    }
+}
+
+.ui-dialog .form-input.input-block {
+    padding-right: .5em;
+
+    &.input-append {
+        input {
+            width: 140px;
+        }
+    }
+
+    input[type="text"], select {
+        width: 170px;
+    }
+
+    textarea {
+        width: 80%;
+    }
+}

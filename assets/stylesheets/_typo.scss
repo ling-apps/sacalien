@@ -1,0 +1,81 @@
+$lineHeight: 18px;
+
+@mixin font($weight, $size, $lineheight: $lineHeight) {
+    font-size: $size;
+    line-height: $lineheight;
+    font-weight: $weight;
+}
+
+html {
+    line-height: $lineHeight;
+    @include font(normal, 12px);
+    font-family: "Open Sans", arial, sans-serif;
+    color: $mainTxt;
+}
+
+a {
+  color: $darkBlue;
+  text-decoration: none;
+  outline: none;
+}
+
+input, select, textarea {
+  color: $mainTxt;
+  @include font(normal, 12px);
+  font-family: "Open Sans", arial, sans-serif;
+}
+
+label.required {
+    &:after {
+        content: "*";
+    }
+}
+
+.content-label {
+  color: #777;
+}
+.content-value {
+  color: #222;
+}
+
+div.disabled {
+  label.disabled {
+    color: #999999;
+  }
+  *[disabled] {
+    color: #a1a1a1;
+  }
+}
+
+h1 {
+  @include font(normal, 25px);
+  text-shadow: 0 1px 0 $white;
+
+  span.mode {
+    @include font(normal, 13px);
+  }
+}
+
+h3 {
+  color: $darkBlue;
+  @include font(normal, 14px);
+  text-shadow: 0 1px 0 $white;
+  text-transform: uppercase;
+
+  &.collapsed {
+    color: $gray;
+  }
+}
+
+h4 {
+  @include font(normal, 13px);
+
+  background: #e9e9e9;
+  padding: 10px 7px;
+  margin-bottom: 10px;
+  text-shadow: 0 1px 0 $white;
+}
+
+strong {
+    font-weight: bold;
+}

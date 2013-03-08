@@ -1,0 +1,54 @@
+$borderRadius: 4px;
+
+@import "compass/reset";
+@import "color";
+@import "font";
+@import "typo";
+@import "mixin";
+@import "form";
+@import "global";
+@import "modal";
+
+.main-title {
+    margin: 20px;
+}
+
+#link-form {
+    margin: 0;
+}
+
+.links-list {
+    margin: 10px;
+}
+
+.label {
+    @include font(bold, 15px);
+    margin-right: 10px;
+}
+
+.link {
+    display: inline-block;
+    @include font(normal, 12px);
+    width: 40px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: bottom;
+
+    &:hover {
+        width: auto;
+        background: white;
+    }
+}
+
+.tags {
+    .tag {
+        padding: 2px 3px;
+        border: 1px solid $gray;
+        @extend .rounded-all;
+    }
+}
+
+.action {
+    margin-left: 20px;
+}

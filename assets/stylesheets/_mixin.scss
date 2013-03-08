@@ -1,0 +1,162 @@
+@import "compass/css3";
+
+/* Create a nice button */
+.mixin-button {
+    cursor: pointer;
+
+    display: inline-block;
+    padding: 2px 14px 6px;
+    width: auto;
+
+    text-align: center;
+    color: #333;
+    text-shadow: 0 1px 1px rgba(255,255,255,.75);
+    @include font(normal, 13px, 20px);
+
+    border: 1px solid #8D8D8D;
+
+    @include border-radius($borderRadius);
+
+    .boxshadow & {
+        @include box-shadow(inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05));
+    }
+
+    background: white;
+    .cssgradients & {
+        @include background(#c3c1c1 linear-gradient(#ffffff, #ffffff 25%, #c3c1c1) repeat-x);
+    }
+
+    .csstransitions & {
+        @include transition(.1s linear all);
+    }
+
+    &:hover {
+        background-position: 0 -15px;
+        color: #333;
+        text-decoration: none;
+        background: #c3c1c1;
+    }
+
+    &:active, &.active {
+
+        .boxshadow & {
+            @include box-shadow(0 2px 4px rgba(0, 0, 0, 0.25) inset, 0 1px 2px rgba(0, 0, 0, 0.05));
+        }
+    }
+
+    &.disabled, &[disabled], &.selected {
+        cursor: default;
+        background-image: none;
+        @include opacity(0.65);
+        @include box-shadow(none);
+
+        .cssgradients & {
+            @include filter(none);
+        }
+        background: #C3C1C1; // Special IE < 9
+    }
+
+    /**
+     *  Different button style
+     */
+    &.primary {
+        background-color: #006DCC;
+        color: white;
+        text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
+        border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+
+        .cssgradients & {
+            @include background(linear-gradient(#0088CC, #0044CC) repeat-x);
+        }
+
+        &.disabled, &[disabled] {
+            @include opacity(0.65);
+            background-color: #0044CC;
+            @include box-shadow(none);
+        }
+    }
+}
+@mixin button() {
+     @extend .mixin-button;
+}
+
+/* Replace text by an image */
+.image-replace {
+    height: 0;
+    overflow: hidden;
+    display: block;
+    font-size: 1em;
+    text-align: left;
+    white-space: nowrap;
+    text-indent: 110%;
+}
+@mixin image-replace($image) {
+    padding-top: image-height($image);
+    width: image-width($image);
+    background: image-url($image) no-repeat;
+    @extend .image-replace;
+}
+
+
+/* Full CSS Arrow */
+@mixin arrow($size, $color, $orientation) {
+    border-width: $size;
+    border-style: solid;
+    margin-top: -5px;
+    right:  0;
+    top: 50%;
+    height: 0;
+    position: absolute;
+    width: 0;
+
+    @if $orientation == left {
+        border-left-color: $color;
+        border-top-color: transparent;
+        border-bottom-color: transparent;
+        border-right: none;
+    } @else if $orientation == top {
+        border-top-color: $color;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        border-bottom: none;
+    } @else if $orientation == right {
+        border-right-color: $color;
+        border-top-color: transparent;
+        border-bottom-color: transparent;
+        border-left: none;
+    } @else if $orientation == bottom {
+        border-bottom-color: $color;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        border-top: none;
+    }
+}
+
+/* GRID helper */
+$column-width: 10%;
+$column-gutter-width: 0;
+$column-outer-width: $column-width + $column-gutter-width * 2;
+
+.ina-column {
+    float: left;
+
+    margin-left: $column-gutter-width;
+    margin-right: $column-gutter-width;
+
+    @include box-sizing(border-box);
+}
+.ina-column-container {
+    &:after {
+        content:"";
+        clear: both;
+    }
+}
+
+@mixin ina-column-wrapper() {
+    @extend .ina-column-container;
+}
+@mixin ina-columns($cols) {
+    @extend .ina-column;
+// width
+    width: 100% / $cols - $column-gutter-width * 2;
+}
