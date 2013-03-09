@@ -181,7 +181,7 @@ strong {
   font-size: 13px;
   line-height: 20px;
   font-weight: normal;
-  border: 1px solid #8d8d8d;
+  border: 1px solid #8D8D8D;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
@@ -507,7 +507,7 @@ textarea {
 
 .actions {
   clear: both;
-  border-top: 1px solid #dddddd;
+  border-top: 1px solid #DDDDDD;
   padding: 17px 0 18px 150px;
   margin-top: 10px;
 }
@@ -662,7 +662,7 @@ textarea {
   background: url(../images/Bandeau_BG01.png) repeat top left;
   border: 1px solid #004d75;
   color: white;
-  padding: 0.4em 1em;
+  padding: .4em 1em;
   line-height: 18px;
   font-weight: 700;
   position: relative;
@@ -678,7 +678,7 @@ textarea {
   border: 1px solid #aaaaaa;
   border-width: 0 1px 1px 1px;
   overflow: auto;
-  padding: 0.5em 1em;
+  padding: .5em 1em;
   position: relative;
 }
 .ui-dialog .ui-dialog-titlebar-close {
@@ -726,6 +726,10 @@ textarea {
   width: 80%;
 }
 
+.page-wrapper, .toolbar, #info {
+  padding: 10px;
+}
+
 .main-title {
   margin: 20px;
 }
@@ -768,4 +772,28 @@ textarea {
 
 .action {
   margin-left: 20px;
+}
+
+.link-item {
+  padding-left: 10px;
+  border-left: 5px solid transparent;
+  margin-bottom: 5px;
+}
+.link-item.selected {
+  border-left: 5px solid #004063;
+  background: #f2f2f2;
+}
+
+/* --- Toolbar --- */
+.toolbar-wrapper {
+  border: 1px solid #b9b9b9;
+}
+
+.toolbar {
+  height: 27px;
+  display: table;
+}
+.toolbar .tool {
+  display: table-cell;
+  padding: 0 10px;
 }

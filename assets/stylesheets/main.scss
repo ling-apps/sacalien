@@ -9,6 +9,10 @@ $borderRadius: 4px;
 @import "global";
 @import "modal";
 
+.page-wrapper, .toolbar, #info {
+  padding: 10px;
+}
+
 .main-title {
     margin: 20px;
 }
@@ -51,4 +55,28 @@ $borderRadius: 4px;
 
 .action {
     margin-left: 20px;
+}
+
+.link-item {
+  padding-left: 10px;
+  border-left: 5px solid transparent;
+  margin-bottom: 5px;
+
+  &.selected {
+    border-left: 5px solid $darkBlue;
+    background: lighten($lighGray, 15%);
+  }
+}
+/* --- Toolbar --- */
+.toolbar-wrapper {
+  border: 1px solid $gray;
+}
+.toolbar {
+  height: 27px;
+  display: table;
+
+  .tool {
+    display: table-cell;
+    padding: 0 10px;
+  }
 }

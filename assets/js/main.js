@@ -39,9 +39,13 @@ var store = {
         })[0];
     },
     search: function(query) {
-        return _.filter(store.data, function(data) {
-            return data.label.match(query)
-        });
+        if (query instanceof Function) {
+            return _.filter(store.data, query);
+        } else {
+            return _.filter(store.data, function(data) {
+                return data.label.match(query)
+            });
+        }
     }
 };
 
@@ -85,6 +89,15 @@ $(document).ready(function() {
         displayTagTool(json);
     });
 
+    $("body").on('change', '#tags-filter', function(e) {
+        var query = $(this).val();
+        var rs = store.search(function(data) {
+            console.log(data, query, data.tags);
+            return data.tags.match(query);
+        });
+        display(rs);
+    });
+
     loadLinks();
     getTags();
 
@@ -98,10 +111,12 @@ $(document).ready(function() {
         display(store.data);
     });
 
-    $("#search").on("keypress", function(e) {
-        if (e.keyCode != 13) return;
-
-        display(store.search($(this).val()));
+    $("#search").on("keyup", function(e) {
+        if ($(this).val() == "") {
+            display(store.data);
+        } else {
+            display(store.search($(this).val()));
+        }
     });
 
     $(".page-wrapper").on('click', "#add-link", function(e) {
@@ -141,5 +156,16 @@ $(document).ready(function() {
         var link = store.findById(linkId);
         store.destroy(link);
         display(store.data);
+    });
+
+    $(".page-wrapper").on("click", ".link-item", function(e) {
+        $(this).data("selected", ! $(this).data("selected"));
+        $(this).toggleClass("selected");
+        $(document).trigger("item.selected", $(this));
+    });
+
+    $(document).on("item.selected", function(item) {
+        var nbItem = $(".selected").length;
+        $("#info").html(nbItem+" items selected");
     });
 });

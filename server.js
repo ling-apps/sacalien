@@ -1,11 +1,35 @@
-var express = require("express");
-var fs = require("fs");
-var MongoClient = require('mongodb').MongoClient;
-var ObjectID = require('mongodb').ObjectID;
+var express = require("express"),
+    EE = require('events').EventEmitter,
+    fs = require("fs"),
+    MongoClient = require('mongodb').MongoClient,
+    ObjectID = require('mongodb').ObjectID;
+
+
 var app = module.exports = express();
 
 app.use(express.static(__dirname));
 app.use(express.bodyParser());
+
+var Events = new EE;
+
+var db = {
+    connect: function() {
+        MongoClient.connect("mongodb://localhost:27017/links", function(err, db) {
+            Events.emit('db connected', db);
+        });
+    },
+    find: function(collection) {
+        Events.on('db connected', function callback(db) {
+            var coll = db.collection(collection);
+            coll.find().toArray(function (err, items) {
+                Events.emit('db find', items);
+            });
+
+            Events.removeListener('db connected', callback);
+        });
+        this.connect();
+    }
+}
 
 /* --- home page --- */
 app.get("/", function(req, res) {
@@ -14,44 +38,32 @@ app.get("/", function(req, res) {
 
 /* --- tag list --- */
 app.get("/tags", function(req, res) {
-    MongoClient.connect("mongodb://localhost:27017/links", function(err, db) {
-        if(!err) {
-            var links = db.collection('links');
-            links.find().toArray(function(err, items) {
-                if (err) {
-                    res.send(500);
-                }
-
-                var tags = [];
-                for (var i = 0; i < items.length; i++) {
-                    if (items[i].tags && items[i].tags != "") {
-                        var aTags = items[i].tags.split(';');
-                        for (y in aTags) {
-                            if (tags.indexOf(aTags[y]) < 0) {
-                                tags.push(aTags[y]);
-                            }
-                        }
+    Events.on('db find', function f (items) {
+        var tags = [];
+        for (var i = 0; i < items.length; i++) {
+            if (items[i].tags && items[i].tags != "") {
+                var aTags = items[i].tags.split(';');
+                for (y in aTags) {
+                    if (tags.indexOf(aTags[y]) < 0) {
+                        tags.push(aTags[y]);
                     }
                 }
-                res.send(tags);
-            });
+            }
         }
-    });
+        res.send(tags);
+        Events.removeListener('db find', f);
+    })
+    db.find('links');
 });
 
 /* --- Links --- */
 app.get("/links", function(req, res) {
-    MongoClient.connect("mongodb://localhost:27017/links", function(err, db) {
-        if(!err) {
-            var links = db.collection('links');
-            links.find().toArray(function(err, items) {
-                if (err) {
-                    res.send(500);
-                }
-                res.json(items);
-            });
-        }
+    Events.on('db find', function f(items) {
+        res.json(items);
+
+        Events.removeListener('db find', f);
     });
+    db.find('links');
 });
 app.post("/links", function(req, res) {
     var link = {};

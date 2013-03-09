@@ -19,30 +19,47 @@
 
 <h1 class="main-title">Sac à lien</h1>
 
-<div class="toolbar">
-    <div class="tool search">
-        <input id="search" placeholder="Search..." />
-    </div>
-    <div class="tool tags">
+<div class="toolbar-wrapper">
+    <div class="toolbar">
+        <div class="tool search">
+            <div class=" form-input input-inline">
+                <input id="search" type="text" placeholder="Search..." />
+            </div>
+        </div>
 
+        <div class="tool tags">
+            <!-- insert tags template here -->
+        </div>
+
+        <div class="tool action">
+            <a href="" id="add-link" class="btn primary">Add</a>
+        </div>
     </div>
 </div>
 <div class="page-wrapper">
+    <!-- insert page content here -->
+</div>
+
+<div id="info">
 </div>
 
 <!-- JS TEMPLATE -->
 <script type="text/x-template" id="tags-tool-template">
-    <select name="tags">
+    <div class="form-input input-inline">
+        <label>Categorie: </label>
+        <select name="tags" id="tags-filter">
+            <option value=''></option>
         <% _.each(tags, function(tag) { %>
             <option value="<%= tag %>"><%= tag %></option>
         <% }); %>
-    </select>
+        </select>
+    </div>
 </script>
 
 <script type="text/x-template" id="link-list-template">
     <ul class="links-list">
         <% _.each(links, function(link) { %>
-        <li>
+        <li class="link-item">
             <span class="label"><%= link.label %></span>
             <span class="link"><a target="_blank" href="<%= link.url %>"><%= link.url %></a></span>
             <span class="tags">
@@ -56,7 +73,6 @@
         </li>
         <% }); %>
     </ul>
-    <a href="" id="add-link" class="btn primary">Add</a>
 
     <div id="form-placeholder"></div>
 </script>
