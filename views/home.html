@@ -17,10 +17,10 @@
 </head>
 <body>
 
-<h1 class="main-title">Sac à lien</h1>
-
 <div class="toolbar-wrapper">
     <div class="toolbar">
+        <h1 class="main-title">Sac à lien</h1>
+
         <div class="tool search">
             <div class=" form-input input-inline">
                 <input id="search" type="text" placeholder="Search..." />
@@ -32,7 +32,7 @@
         </div>
 
         <div class="tool action">
-            <a href="" id="add-link" class="btn primary">Add</a>
+            <a href="" id="add-link" class="btn">Add</a>
         </div>
     </div>
 </div>
@@ -60,16 +60,18 @@
     <ul class="links-list">
         <% _.each(links, function(link) { %>
         <li class="link-item">
+            <input type="checkbox" name="select" />
             <span class="label"><%= link.label %></span>
-            <span class="link"><a target="_blank" href="<%= link.url %>"><%= link.url %></a></span>
             <span class="tags">
                 <% if (link.tags) { _.each(link.tags.split(';'), function(tag) { %>
                     <span class="tag"><%= tag %></span>
                 <% }); } %>
             </span>
+
             <span class="action">
                 <a href="" class="edit" data-link-id="<%= link._id %>">edit</a> | <a href="" class="delete" data-link-id="<%= link._id %>">Delete</a>
             </span>
+            <span class="link"><a target="_blank" href="<%= link.url %>"><%= link.url %></a></span>
         </li>
         <% }); %>
     </ul>
@@ -82,27 +84,28 @@
             <% if (link._id) { %>
                 <input type="hidden" name="id" value="<%= link._id %>" />
             <% } %>
-            <div class="form-input input-inline">
+            <div class="form-input input-block">
                 <label for="label">
                     Label
                 </label>
-                <input id="label" name="label" value="<%= link.label %>"/>
+                <input type="text" id="label" name="label" value="<%= link.label %>"/>
             </div>
-            <div class="form-input input-inline">
+            <div class="form-input input-block">
                 <label for="url">
                     Url
                 </label>
-                <input id="url" name="url" value="<%= link.url %>"/>
+                <input type="text" id="url" name="url" value="<%= link.url %>"/>
             </div>
 
-            <div class="form-input input-inline">
+            <div class="form-input input-block">
                 <label for="tags">
                     Tags
                 </label>
-                <input id="tags" name="tags" value="<%= link.tags %>" />
+                <input type="text" id="tags" name="tags" value="<%= link.tags %>" />
             </div>
             <div class="action">
                 <input type="submit" value="add" class="btn primary" />
+                <input type="reset" value="cancel" class="btn cancel" />
             </div>
     </form>
 </script>

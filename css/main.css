@@ -173,7 +173,7 @@ strong {
 .mixin-button, .form-input.input-inline .radio-group .radio label, .btn {
   cursor: pointer;
   display: inline-block;
-  padding: 2px 14px 6px;
+  padding: 2px 14px 4px;
   width: auto;
   text-align: center;
   color: #333;
@@ -182,11 +182,11 @@ strong {
   line-height: 20px;
   font-weight: normal;
   border: 1px solid #8D8D8D;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
-  border-radius: 4px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
   background: white;
   /**
    *  Different button style
@@ -726,16 +726,20 @@ textarea {
   width: 80%;
 }
 
-.page-wrapper, .toolbar, #info {
-  padding: 10px;
-}
-
-.main-title {
-  margin: 20px;
-}
-
 #link-form {
-  margin: 0;
+  position: fixed;
+  top: 40px;
+  height: 70px;
+  left: 0;
+  right: 0;
+  padding-left: 10px;
+  padding: 10px;
+  background: white;
+  overflow: auto;
+  color: black;
+}
+#link-form .action {
+  display: inline-block;
 }
 
 .links-list {
@@ -743,26 +747,18 @@ textarea {
 }
 
 .label {
-  font-size: 15px;
+  font-size: 16px;
   line-height: 18px;
-  font-weight: bold;
-  margin-right: 10px;
+  font-weight: normal;
+  display: inline-block;
+  min-width: 200px;
 }
 
 .link {
-  display: inline-block;
+  display: block;
   font-size: 12px;
   line-height: 18px;
   font-weight: normal;
-  width: 40px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  vertical-align: bottom;
-}
-.link:hover {
-  width: auto;
-  background: white;
 }
 
 .tags .tag {
@@ -775,25 +771,60 @@ textarea {
 }
 
 .link-item {
-  padding-left: 10px;
+  padding: 5px 10px;
   border-left: 5px solid transparent;
   margin-bottom: 5px;
 }
 .link-item.selected {
-  border-left: 5px solid #004063;
+  border-left: 5px solid #a6a6a6;
   background: #f2f2f2;
+  color: black;
 }
 
 /* --- Toolbar --- */
+body {
+  background: black;
+  color: #eeeeee;
+}
+
 .toolbar-wrapper {
-  border: 1px solid #b9b9b9;
+  border-bottom: 1px solid #b9b9b9;
+  background: #050505;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  padding: 0;
+  margin: 0;
+}
+.toolbar-wrapper .main-title {
+  padding: 0 10px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .toolbar {
-  height: 27px;
+  position: relative;
   display: table;
+  padding: 0;
+  margin: 0;
+  line-height: 40px;
 }
 .toolbar .tool {
   display: table-cell;
   padding: 0 10px;
+  vertical-align: middle;
+}
+.toolbar .form-input {
+  margin-bottom: 0;
+}
+
+/* --- page content --- */
+.page-wrapper {
+  margin-top: 50px;
+}
+
+#info {
+  padding-left: 10px;
 }

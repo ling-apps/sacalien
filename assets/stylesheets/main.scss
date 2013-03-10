@@ -1,4 +1,4 @@
-$borderRadius: 4px;
+$borderRadius: 0px;
 
 @import "compass/reset";
 @import "color";
@@ -10,73 +10,113 @@ $borderRadius: 4px;
 @import "modal";
 
 .page-wrapper, .toolbar, #info {
-  padding: 10px;
-}
-
-.main-title {
-    margin: 20px;
 }
 
 #link-form {
-    margin: 0;
+  position: fixed;
+  top: 40px;
+  height: 70px;
+  left: 0;
+  right: 0;
+
+  padding: 10px;
+
+  background: white;
+  overflow: auto;
+
+  color: black;
+
+  .action {
+    display: inline-block;
+  }
 }
 
 .links-list {
-    margin: 10px;
+  margin: 10px;
 }
 
 .label {
-    @include font(bold, 15px);
-    margin-right: 10px;
+  @include font(normal, 16px);
+  display: inline-block;
+  min-width: 200px;
 }
 
 .link {
-    display: inline-block;
-    @include font(normal, 12px);
-    width: 40px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-    vertical-align: bottom;
-
-    &:hover {
-        width: auto;
-        background: white;
-    }
+  display: block;
+  @include font(normal, 12px);
 }
 
 .tags {
-    .tag {
-        padding: 2px 3px;
-        border: 1px solid $gray;
-        @extend .rounded-all;
-    }
+  .tag {
+    padding: 2px 3px;
+    border: 1px solid $gray;
+    @extend .rounded-all;
+  }
 }
 
 .action {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .link-item {
-  padding-left: 10px;
+  padding: 5px 10px;
   border-left: 5px solid transparent;
   margin-bottom: 5px;
 
   &.selected {
-    border-left: 5px solid $darkBlue;
+    border-left: 5px solid darken($lighGray, 15%);
     background: lighten($lighGray, 15%);
+    color: black;
   }
 }
+
 /* --- Toolbar --- */
-.toolbar-wrapper {
-  border: 1px solid $gray;
+body {
+  background: black;
+  color: rgb(238, 238, 238);
 }
+
+.toolbar-wrapper {
+  border-bottom: 1px solid $gray;
+  background: lighten(black, 2%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+
+  padding: 0;
+  margin: 0;
+
+  .main-title {
+    padding: 0 10px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
 .toolbar {
-  height: 27px;
+  position: relative;
   display: table;
+  padding: 0;
+  margin: 0;
+  line-height: 40px;
 
   .tool {
     display: table-cell;
     padding: 0 10px;
+    vertical-align: middle;
   }
+
+  .form-input {
+    margin-bottom: 0;
+  }
+}
+
+/* --- page content --- */
+.page-wrapper {
+  margin-top: 50px;
+}
+#info {
+  padding-left: 10px;
 }

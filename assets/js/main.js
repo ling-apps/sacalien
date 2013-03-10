@@ -124,6 +124,10 @@ $(document).ready(function() {
         linkForm();
     });
 
+    $(".page-wrapper").on("reset", "#link-form", function(e) {
+       display(store.data);
+    });
+
     $(".page-wrapper").on("submit", "#link-form", function(e) {
         console.log("submit form");
         e.preventDefault();
@@ -158,9 +162,10 @@ $(document).ready(function() {
         display(store.data);
     });
 
-    $(".page-wrapper").on("click", ".link-item", function(e) {
-        $(this).data("selected", ! $(this).data("selected"));
-        $(this).toggleClass("selected");
+    $(".page-wrapper").on("click", ".link-item input[type='checkbox']", function(e) {
+        $linkItem = $(this).parents(".link-item");
+        $linkItem.data("selected", ! $(this).data("selected"));
+        $linkItem.toggleClass("selected");
         $(document).trigger("item.selected", $(this));
     });
 
