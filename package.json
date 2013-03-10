@@ -7,7 +7,6 @@
     "url": ""
   },
   "dependencies": {
-    "npm": "1.1.x",
     "express": "3.x",
     "ejs" : "x",
     "mongodb": "1.2.10",
@@ -21,6 +20,7 @@
   "devDependencies": {},
   "optionalDependencies": {},
   "engines": {
+    "npm": "1.1.x",
     "node": "0.8.21"
   }
 }
