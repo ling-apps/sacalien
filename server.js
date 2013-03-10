@@ -73,42 +73,39 @@ app.post("/links", function(req, res) {
     link.url = req.body.url;
     link.tags = req.body.tags;
 
-    MongoClient.connect("mongodb://localhost:27017/links", function(err, db) {
-        if(!err) {
-            var links = db.collection('links');
-            links.insert(link, function(err, result) {
-                res.json(result[0]);
-            });
-        }
+    Events.on('db connected', function(db) {
+        var links = db.collection('links');
+        links.insert(link, function(err, result) {
+            res.json(result[0]);
+        });
     });
+    db.connect();
 });
 app.put("/links/:id", function(req, res) {
     var id = req.params.id;
     var link = req.body;
 
-    MongoClient.connect("mongodb://localhost:27017/links", function(err, db) {
-        if(!err) {
-            var links = db.collection('links');
-            links.update({_id: ObjectID(link._id)}, {$set: {label: link.label, url: link.url, tags: link.tags}}, function(err, result) {
-                if (err) {
-                    res.send(500);
-                } else {
-                    res.send(200);
-                }
-            })
-        }
+    Events.on("db connected", function(db) {
+        var links = db.collection('links');
+        links.update({_id: ObjectID(link._id)}, {$set: {label: link.label, url: link.url, tags: link.tags}}, function(err, result) {
+            if (err) {
+                res.send(500);
+            } else {
+                res.send(200);
+            }
+        })
     });
+    db.connect();
 });
 app.delete("/links/:id", function(req, res) {
     res.send(200);
     var id = req.params.id;
 
-    MongoClient.connect("mongodb://localhost:27017/links", function(err, db) {
-        if(!err) {
-            var links = db.collection('links');
-            links.remove({_id: ObjectID(id)}, function(err, rs) {});
-        }
+    Events.on("db connected", function() {
+        var links = db.collection('links');
+        links.remove({_id: ObjectID(id)}, function(err, rs) {});
     });
+    db.connect();
 });
 
 app.listen(process.env.PORT || 3000);
