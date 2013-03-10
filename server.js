@@ -14,7 +14,9 @@ var Events = new EE;
 
 var db = {
     connect: function() {
-        MongoClient.connect("mongodb://localhost:27017/links", function(err, db) {
+        var mongoUri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || "mongodb://localhost:27017/links";
+
+        MongoClient.connect(mongoUri, function(err, db) {
             Events.emit('db connected', db);
         });
     },
