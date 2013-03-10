@@ -119,7 +119,7 @@ $(document).ready(function() {
         }
     });
 
-    $(".page-wrapper").on('click', "#add-link", function(e) {
+    $(".toolbar").on('click', "#add-link", function(e) {
         e.preventDefault();
         linkForm();
     });
