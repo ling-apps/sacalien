@@ -14,6 +14,7 @@ var store = {
             $(store).trigger("data.added");
         });
     },
+
     update: function(id, data) {
         var obj = this.findById(id);
         obj = _.extend(obj, data);
@@ -29,6 +30,7 @@ var store = {
         var index = _.indexOf(store.data, obj);
         store.data.splice(index, 1);
         $.ajax({
+
             url: this.baseUrl + "/" + obj._id + "/delete",
             method: "get"
         });

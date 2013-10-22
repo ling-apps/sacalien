@@ -145,6 +145,7 @@ jQuery.effects||function(a,b){function c(b){var c;return b&&b.constructor==Array
             $(store).trigger("data.added");
         });
     },
+
     update: function(id, data) {
         var obj = this.findById(id);
         obj = _.extend(obj, data);
@@ -160,8 +161,9 @@ jQuery.effects||function(a,b){function c(b){var c;return b&&b.constructor==Array
         var index = _.indexOf(store.data, obj);
         store.data.splice(index, 1);
         $.ajax({
-            url: this.baseUrl + "/" + obj._id,
-            method: "delete"
+
+            url: this.baseUrl + "/" + obj._id + "/delete",
+            method: "get"
         });
     },
     findById: function(id) {
