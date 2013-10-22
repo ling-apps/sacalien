@@ -29,8 +29,8 @@ var store = {
         var index = _.indexOf(store.data, obj);
         store.data.splice(index, 1);
         $.ajax({
-            url: this.baseUrl + "/" + obj._id,
-            method: "delete"
+            url: this.baseUrl + "/" + obj._id + "/delete",
+            method: "get"
         });
     },
     findById: function(id) {

@@ -97,7 +97,7 @@ app.put("/links/:id", function(req, res) {
     });
     db.connect();
 });
-app.delete("/links/:id", function(req, res) {
+app.get("/links/:id/delete", function(req, res) {
     res.send(200);
     var id = req.params.id;
 
