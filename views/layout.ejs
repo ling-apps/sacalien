@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%- title %></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <link rel="stylesheets" href="/styles/base.css" media="screen" />
+  </head>
+
+  <body>
+
+    <!-- Include the view file for the current controller/route -->
+    <%- body %>
+
+    <script type="text/javascript" src="/js/static/socket.io.js"></script>
+    <script type="text/javascript" src="/js/static/sails.io.js"></script>
+    <script type="text/javascript" src="/js/static/app.js"></script>
+
+    <script type="text/javascript" src="/js/main.js"></script>
+  </body>
+</html>
