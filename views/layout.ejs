@@ -5,13 +5,24 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-    <link rel="stylesheets" href="/styles/base.css" media="screen" />
+    <link type="text/css" href='/styles/base.css' rel='stylesheet'/>
   </head>
 
   <body>
 
-    <!-- Include the view file for the current controller/route -->
-    <%- body %>
+      <div class="header">
+          <h1>Le sac à Lien</h1>
+      </div>
+
+      <div class="content">
+          <!-- Include the view file for the current controller/route -->
+          <%- body %>
+      </div>
+
+      <div class="footer">
+          mon petit sac à lien | Nicolas MEDDA (b2l.powa chez gmail.com)
+      </div>
+
 
     <script type="text/javascript" src="/js/static/socket.io.js"></script>
     <script type="text/javascript" src="/js/static/sails.io.js"></script>

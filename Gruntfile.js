@@ -29,7 +29,6 @@ module.exports = function (grunt) {
    */
 
   var cssFilesToInject = [
-    'linker/**/*.css'
   ];
 
 
@@ -210,8 +209,10 @@ module.exports = function (grunt) {
             options: {
                 environment: 'development',
                 outputStyle: 'expanded',
+                imagesDir: './assets/images',
                 generatedImagesDir: './.tmp/public/img',
-                sassDir: './assets/scss/',
+                relativeAssets: true,
+                sassDir: './assets/scss',
                 cssDir: './.tmp/public/styles'
             }
         },
@@ -220,7 +221,7 @@ module.exports = function (grunt) {
                 environment: 'production',
                 outputStyle: 'compressed',
                 generatedImagesDir: './.tmp/public/img',
-                sassDir: './assets/scss/',
+                sassDir: './assets/scss',
                 cssDir: './.tmp/public/styles'
             }
         }
