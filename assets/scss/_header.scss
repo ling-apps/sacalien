@@ -1,22 +1,25 @@
 $header: sprite-map('header/*.png');
 $logoUrl: sprite-file($header, 'sacalien');
+$headerHeight: image-height($logoUrl);
+$headerBorderBottom: 0;
 
 .header {
-  background: #3e3e3e sprite($header, 'sacalien') no-repeat;
-  height: image-height($logoUrl);
+  background: $color1 sprite($header, 'sacalien') no-repeat;
+  height: $headerHeight;
 
-  position: static;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
 
   color: white;
 
-  border-bottom: 20px solid #333;
+  border-bottom: $headerBorderBottom solid $color2;
 
   h1 {
     text-align: left;
     margin-left: image-width($logoUrl) + 20;
-    font-size: image-height($logoUrl) / 2;
+    font-size: image-height($logoUrl) - 20;
+    padding-top: 10px;
   }
 }

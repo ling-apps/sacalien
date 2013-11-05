@@ -1,0 +1,17 @@
+$footerHeight: 20px;
+$footerBorderTop: 5px;
+
+.footer {
+  position: fixed;
+
+  bottom: 0;
+  height: $footerHeight;
+  left: 0;
+  right: 0;
+  border-top: $footerBorderTop solid $color2;
+
+  text-align: center;
+  color: white;
+
+  background: $color1;
+}

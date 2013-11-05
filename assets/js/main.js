@@ -1,4 +1,5 @@
 require('./tools/console');
+var LinksView = require('./views/links');
 
 var App = {
     transitionTo: function(route) {
@@ -6,13 +7,13 @@ var App = {
     },
     init: function() {
         this.socket = window.socket;
+        this.container = document.querySelector('.content');
 
         this.transitionTo('index');
     },
     index: function() {
-        this.socket.get('users', function(users) {
-            console.log(users);
-        });
+        var linksView = new LinksView(this.container, this.socket);
+        linksView.init();
     }
 };
 

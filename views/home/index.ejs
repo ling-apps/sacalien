@@ -1,0 +1,48 @@
+<script id="link-view" type="text/x-template">
+    <div id="top-wrapper"></div>
+    <div id="list-wrapper" class="link-list"></div>
+</script>
+
+<script id="link-top" type="text/x-template">
+    <div class="toolbar">
+        <ul>
+            <li class="btn">Add</li>
+            <li>
+                <input type="text" placeholder="Search" name="filter"/>
+            </li>
+
+            <li class="float-right btn-group">
+                <span class="btn btn-list"></span>
+                <span class="btn btn-grid"></span>
+            </li>
+        </ul>
+    </div>
+</script>
+
+<script id="link-list" type="text/x-template">
+    <ul>
+        --- _.each(links, function(link) { ---
+            <li>
+                <div class="link">
+                    <span class="link-name">
+                        ---= link.name ---
+                    </span>
+                    <span class="link-url">
+                        <a class="href ext" href="---= link.url ---">---= link.url ---</a>
+                    </span>
+
+                    <span class="link-tags">
+                        --- _.each(link.tags.split(' '), function(tag) { ---
+                            <span class="tag">
+                                ---= tag ---
+                            </span>
+                        --- }) ---
+                    </span>
+                </div>
+            </li>
+        --- }) ---
+    </ul>
+
+    ---= links.length --- Liens
+
+</script>
