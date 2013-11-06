@@ -122,7 +122,7 @@ LinksView.prototype.showAddLinkForm = function showAddLinkForm(e) {
     if ($link) {
         var id = $link.getAttribute('data-link-id');
         var link = this.links.filter(function(link) {
-            return Number(id) === Number(link.id);
+            return id === link.id;
         })[0];
         formWrapper.querySelector('[name="label"]').value = link.label;
         formWrapper.querySelector('[name="url"]').value = link.url;
