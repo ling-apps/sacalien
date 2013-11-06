@@ -13,8 +13,10 @@
  */
 
 module.exports.adapters = {
-    mongodb: {
-        module: 'sails-mongo',
-        schema: true
+    'default': 'mongo',
+
+    mongo: {
+        module   : 'sails-mongo',
+        url      : process.env.MONGOLAB_URI || 'mongodb://localhost:27017/sails'
     }
 };
