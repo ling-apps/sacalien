@@ -19,7 +19,7 @@ var App = {
 };
 
 App.init();
-},{"./views/links":2,"./tools/console":3}],3:[function(require,module,exports){
+},{"./tools/console":2,"./views/links":3}],2:[function(require,module,exports){
 if (window) {
     if (!window.hasOwnProperty('console')) {
         window.console = {
@@ -30,7 +30,7 @@ if (window) {
         }
     }
 }
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 var _ = require('../tools/underscore');
 
 function LinksView($el, socket) {
