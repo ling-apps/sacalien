@@ -1,6 +1,6 @@
 <script id="link-view" type="text/x-template">
     <div id="top-wrapper"></div>
-    <div id="list-wrapper" class="link-list"></div>
+    <div id="list-wrapper" class="link-list display-list"></div>
 </script>
 
 <script id="link-top" type="text/x-template">
@@ -8,18 +8,24 @@
         <ul>
             <li class="btn add-link-btn">Ajouter</li>
             <li>
-                <input type="text" placeholder="Search" name="filter"/>
+                <input type="text" placeholder="Search" name="filter" class="search"/>
+            </li>
+
+            <li class="nb-links">
+                ---= nbLinks --- Liens
             </li>
 
             <li class="float-right btn-group">
-                <span class="btn btn-list"></span>
-                <span class="btn btn-grid"></span>
+                <span class="btn btn-list" title="voir en liste"></span>
+                <span class="btn btn-grid" title="voir en grille"></span>
             </li>
         </ul>
     </div>
 
     <form method="post" class="add-link-form height0">
-        <input type="text" name="name" placeholder="Name" />
+        <input type="hidden" name="id"/>
+
+        <input type="text" name="label" placeholder="Name" />
         <input type="text" name="url" placeholder="URL" />
         <input type="text" name="tags" placeholder="Tags"/>
 
@@ -31,27 +37,27 @@
 <script id="link-list" type="text/x-template">
     <ul>
         --- _.each(links, function(link) { ---
-            <li>
-                <div class="link">
-                    <span class="link-name">
-                        ---= link.name ---
-                    </span>
-                    <span class="link-url">
-                        <a class="href ext" href="---= link.url ---">---= link.url ---</a>
-                    </span>
+            <li class="link" data-link-id="---= link.id ---">
+                <span class="link-name">
+                    ---= link.label ---
+                </span>
+                <span class="link-url">
+                    <a class="href ext" href="---= link.url ---">---= link.url ---</a>
+                </span>
 
-                    <span class="link-tags">
+                <span class="link-delete" data-link-id="---= link.id ---">X</span>
+
+                <span class="link-tags">
+                    --- if (link.tags) { ---
                         --- _.each(link.tags.split(' '), function(tag) { ---
                             <span class="tag">
                                 ---= tag ---
                             </span>
                         --- }) ---
-                    </span>
-                </div>
+                    --- } ---
+                </span>
             </li>
         --- }) ---
     </ul>
-
-    ---= links.length --- Liens
 
 </script>

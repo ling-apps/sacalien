@@ -113,10 +113,17 @@ input {
   @include transition(.1s linear all);
 
   &:hover {
+    background: #c3c1c1;
     background-position: 0 -15px;
     color: #333;
     text-decoration: none;
+  }
+
+  &.active {
     background: #c3c1c1;
+    background-position: 0 -15px;
+    color: #333;
+    text-decoration: none;
   }
 }
 
