@@ -12,8 +12,8 @@ function LinksView($el, socket) {
 
 LinksView.prototype.init = function init() {
     this.socket.get('/links', function(resp) {
-        console.log(resp);
         this.links = resp;
+        this.setDisplayedLinks([]);
         this.render();
     }.bind(this));
 };
@@ -155,7 +155,6 @@ LinksView.prototype.addLink = function addLink(e) {
 
     if (id !== "") {
         this.socket.put('/links/' + id, link, function(res) {
-            console.log(link, res);
             view.init();
         });
     } else {
