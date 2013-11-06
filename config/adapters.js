@@ -17,6 +17,6 @@ module.exports.adapters = {
 
     mongo: {
         module   : 'sails-mongo',
-        url      : process.env.MONGOLAB_URI + "/links" || 'mongodb://localhost:27017/links'
+        url      : process.env.MONGOHQ_URL + "/links" || 'mongodb://localhost:27017/links'
     }
 };
