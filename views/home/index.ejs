@@ -6,7 +6,7 @@
 <script id="link-top" type="text/x-template">
     <div class="toolbar">
         <ul>
-            <li class="btn">Add</li>
+            <li class="btn add-link-btn">Ajouter</li>
             <li>
                 <input type="text" placeholder="Search" name="filter"/>
             </li>
@@ -17,6 +17,15 @@
             </li>
         </ul>
     </div>
+
+    <form method="post" class="add-link-form height0">
+        <input type="text" name="name" placeholder="Name" />
+        <input type="text" name="url" placeholder="URL" />
+        <input type="text" name="tags" placeholder="Tags"/>
+
+        <input type="submit" value="Ajouter"/>
+        <input type="cancel" value="Annuler" class="cancel-add-link"/>
+    </form>
 </script>
 
 <script id="link-list" type="text/x-template">

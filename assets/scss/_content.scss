@@ -27,6 +27,21 @@ $icone: sprite-map('icone/*.png');
   }
 }
 
+.add-link-form {
+  display: block;
+  padding: 10px;
+  height: auto;
+
+  background: white;
+  @include transition(all 0.3s);
+
+  &.height0 {
+    height: 0px;
+    padding: 0;
+    overflow: hidden;
+  }
+}
+
 .link {
   .link-name {
     display: inline-block;
@@ -54,6 +69,7 @@ $icone: sprite-map('icone/*.png');
     }
   }
 }
+
 
 a.ext {
   &:after {
@@ -100,7 +116,6 @@ a.ext {
   }
 }
 
-/* Utiliser l'image de grid */
 .btn-grid {
   $btnGrid: sprite-file($icone, 'btn-grid');
   width: image-width($btnGrid);
