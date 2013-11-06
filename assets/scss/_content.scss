@@ -13,6 +13,24 @@ $icone: sprite-map('icone/*.png');
    background: $color3;
 }
 
+#top-wrapper {
+  position: fixed;
+  top: $headerHeight + $headerBorderBottom;
+  right: 0;
+  left: 0;
+  height: 120px;
+  z-index: 1;
+}
+
+#list-wrapper {
+  position: fixed;
+  top: 110px;
+  bottom: 25px;
+  left: 0;
+  right: 0;
+  overflow: auto;
+}
+
 .nb-links {
   color: $link;
 }
