@@ -1,0 +1,73 @@
+{
+  "data": {
+    "users": [],
+    "links": [
+      {
+        "label": "google",
+        "url": "http://www.google.com",
+        "tags": "search google",
+        "createdAt": "2013-11-06T12:40:21.990Z",
+        "updatedAt": "2013-11-06T12:40:21.990Z",
+        "id": 9
+      },
+      {
+        "label": "test",
+        "url": "test",
+        "tags": "test",
+        "createdAt": "2013-11-06T12:48:37.476Z",
+        "updatedAt": "2013-11-06T12:48:37.476Z",
+        "id": 10
+      },
+      {
+        "label": "toto",
+        "url": "totot",
+        "tags": "toto",
+        "createdAt": "2013-11-06T12:50:01.721Z",
+        "updatedAt": "2013-11-06T12:50:01.721Z",
+        "id": 11
+      }
+    ]
+  },
+  "schema": {
+    "users": {
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "defaultsTo": "AUTO_INCREMENT",
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime",
+        "default": "NOW"
+      },
+      "updatedAt": {
+        "type": "datetime",
+        "default": "NOW"
+      }
+    },
+    "links": {
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "defaultsTo": "AUTO_INCREMENT",
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime",
+        "default": "NOW"
+      },
+      "updatedAt": {
+        "type": "datetime",
+        "default": "NOW"
+      }
+    }
+  },
+  "counters": {
+    "users": {},
+    "links": {
+      "id": 11
+    }
+  }
+}
