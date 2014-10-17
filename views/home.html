@@ -6,36 +6,46 @@
 <!--[if gt IE 9]><!--><html lang="fr" class="no-js"><![endif]-->
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
 
     <title>Mon sac à lien</title>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css"/>
+    <!--<link rel="stylesheet" type="text/css" media="screen" href="css/main.css"/>-->
 
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/css/foundation.min.css"> <!-- inks css file -->
     <script src="js/main.js"></script>
 </head>
 <body>
 
-<div class="toolbar-wrapper">
-    <div class="toolbar">
-        <h1 class="main-title">Sac à lien</h1>
+<nav class="toolbar-wrapper top-bar">
 
-        <div class="tool search">
-            <div class=" form-input input-inline">
+        <ul class="title-area">
+            <li class="name"><h1><a class="">Sac à lien</a></h1></li>
+        </ul>
+    <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul >
+            <li class="tool search has-form">
                 <input id="search" type="text" placeholder="Search..." />
-            </div>
-        </div>
+            </li>
 
-        <div class="tool tags">
-            <!-- insert tags template here -->
-        </div>
 
-        <div class="tool action">
-            <a href="" id="add-link" class="btn">Add</a>
-        </div>
-    </div>
-</div>
+
+            <li class="tool action has-form">
+                <a href="" class="button" id="add-link">Add</a>
+            </li>
+            <li class="divider"></li>
+            <li class="right"><a>About</a></li>
+
+        </ul>
+        </section>
+
+</nav>
+<section class="tool tags ">
+    <!-- insert tags template here -->
+</section>
 <div class="page-wrapper">
     <!-- insert page content here -->
 </div>
@@ -45,15 +55,25 @@
 
 <!-- JS TEMPLATE -->
 <script type="text/x-template" id="tags-tool-template">
-    <div class="form-input input-inline">
-        <label>Categorie: </label>
-        <select name="tags" id="tags-filter">
-            <option value=''></option>
-        <% _.each(tags, function(tag) { %>
-            <option value="<%= tag %>"><%= tag %></option>
-        <% }); %>
-        </select>
-    </div>
+
+        <div class="row">
+            <div class="small-8">
+                <div class="row">
+                    <div class="small-3 columns">
+                        <label for="tags" class="right inline">Categorie</label>
+                    </div>
+                    <div class="small-9 columns">
+                        <select name="tags" id="tags-filter">
+                            <option value=''></option>
+                            <% _.each(tags, function(tag) { %>
+                            <option value="<%= tag %>"><%= tag %></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 </script>
 
 <script type="text/x-template" id="link-list-template">
@@ -80,33 +100,21 @@
 </script>
 
 <script type="text/x-template" id="link-form-template">
-    <form id="link-form">
+    <div class="">
+    <form id="link-form" class="pure-form">
+        <fieldset>
             <% if (link._id) { %>
                 <input type="hidden" name="id" value="<%= link._id %>" />
             <% } %>
-            <div class="form-input input-block">
-                <label for="label">
-                    Label
-                </label>
-                <input type="text" id="label" name="label" value="<%= link.label %>"/>
-            </div>
-            <div class="form-input input-block">
-                <label for="url">
-                    Url
-                </label>
-                <input type="text" id="url" name="url" value="<%= link.url %>"/>
-            </div>
+                <input type="text" id="label" name="label" value="<%= link.label %>" placeholder="Label"/>
+                <input type="text" id="url" name="url" value="<%= link.url %>" placeholder="Url"/>
+                <input type="text" id="tags" name="tags" value="<%= link.tags %>"  placeholder="Tags"/>
 
-            <div class="form-input input-block">
-                <label for="tags">
-                    Tags
-                </label>
-                <input type="text" id="tags" name="tags" value="<%= link.tags %>" />
-            </div>
-            <div class="action">
-                <input type="submit" value="add" class="btn primary" />
-                <input type="reset" value="cancel" class="btn cancel" />
-            </div>
+                <input type="submit" value="add" class="pure-button pure-button-primary" />
+                <input type="reset" value="cancel" class="pure-button " />
+
+        </fieldset>
+    </div>
     </form>
 </script>
 
