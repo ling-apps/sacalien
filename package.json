@@ -7,15 +7,15 @@
     "url": ""
   },
   "dependencies": {
-    "express": "3.x",
-    "ejs" : "x",
-    "mongodb": "1.2.10",
+    "ejs": "x",
+    "express": "^3.17.8",
     "grunt": "~0.4.x",
     "grunt-contrib-compass": "~0.1.3",
-    "grunt-contrib-sass": "~0.2.2",
     "grunt-contrib-concat": "~0.1.2",
+    "grunt-contrib-copy": "x",
+    "grunt-contrib-sass": "~0.2.2",
     "grunt-contrib-watch": "~0.2.0",
-    "grunt-contrib-copy": "x"
+    "mongodb": "1.2.10"
   },
   "devDependencies": {},
   "optionalDependencies": {},

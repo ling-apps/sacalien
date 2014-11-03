@@ -121,9 +121,10 @@ $(document).ready(function() {
         }
     });
 
-    $(".toolbar").on('click', "#add-link", function(e) {
-        e.preventDefault();
+    $(".toolbar-wrapper").on('click', "#add-link", function(e) {
+
         linkForm();
+
     });
 
     $(".page-wrapper").on("reset", "#link-form", function(e) {
