@@ -1,18 +1,11 @@
 <!DOCTYPE html>
 
 
-<!--[if IE 8]>
-<html lang="fr" class="no-js ie8"><![endif]-->
-<!--[if IE 9]>
-<html lang="fr" class="no-js ie9"><![endif]-->
-<!--[if gt IE 9]><!-->
-<html lang="fr" class="no-js"><![endif]-->
+<!--[if IE 8]><html lang="fr" class="no-js ie8"><![endif]-->
+<!--[if IE 9]><html lang="fr" class="no-js ie9"><![endif]-->
+<!--[if gt IE 9]><!--><html lang="fr" class="no-js"><![endif]-->
 <head>
-<<<<<<< HEAD
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-=======
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
->>>>>>> 3ccfadb7857aee0df2c91e01688a4aa06d737dd7
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
 
@@ -20,44 +13,22 @@
 
     <!--<link rel="stylesheet" type="text/css" media="screen" href="css/main.css"/>-->
 
-<<<<<<< HEAD
     <script src="assets/lib/foundation-essentials-5.4.6/js/vendor/jquery.js"></script>
     <script type="text/javascript" src="assets/lib/foundation-essentials-5.4.6/js/foundation.min.js"></script>
-    <script type="text/javascript"
-            src="assets/lib/foundation-essentials-5.4.6/js/foundation/foundation.reveal.js"></script>
+    <script type="text/javascript" src="assets/lib/foundation-essentials-5.4.6/js/foundation/foundation.reveal.js"></script>
 
     <link rel="stylesheet" type="text/css" href="assets/lib/foundation-essentials-5.4.6/css/foundation.min.css">
-=======
-
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/css/foundation.min.css"> <!-- inks css file -->
->>>>>>> 3ccfadb7857aee0df2c91e01688a4aa06d737dd7
     <script src="js/main.js"></script>
 
 </head>
 <body>
 
 <nav class="toolbar-wrapper top-bar">
-<<<<<<< HEAD
 
     <ul class="title-area">
         <li class="name"><h1><a class="">Sac à lien</a></h1></li>
     </ul>
     <section class="top-bar-section toolbar-wrapper ">
-        <!-- Right Nav Section -->
-        <ul>
-            <li class="tool search has-form">
-                <input id="search" type="text" placeholder="Search..."/>
-            </li>
-
-
-            <li class="tool action has-form">
-                <a href="#" class="button" id="add-link" data-reveal-id="addModal">Add</a>
-=======
-
-        <ul class="title-area">
-            <li class="name"><h1><a class="">Sac à lien</a></h1></li>
-        </ul>
-    <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul >
             <li class="tool search has-form">
@@ -67,24 +38,16 @@
 
 
             <li class="tool action has-form">
-                <a href="" class="button" id="add-link">Add</a>
->>>>>>> 3ccfadb7857aee0df2c91e01688a4aa06d737dd7
+                <a href="#" class="button" id="add-link" data-reveal-id="addModal">Add</a>
             </li>
             <li class="divider"></li>
             <li class="right"><a>About</a></li>
 
         </ul>
-<<<<<<< HEAD
     </section>
 
 </nav>
 <section class="tool tags panel">
-=======
-        </section>
-
-</nav>
-<section class="tool tags ">
->>>>>>> 3ccfadb7857aee0df2c91e01688a4aa06d737dd7
     <!-- insert tags template here -->
 </section>
 <div class="page-wrapper">
@@ -94,9 +57,7 @@
 
 <div id="myModal" class="reveal-modal" data-reveal>
     <h2>Awesome. I have it.</h2>
-
-    <p class="lead">Your couch. It is mine.</p>
-
+    <p class="lead">Your couch.  It is mine.</p>
     <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
     <a class="close-reveal-modal">&#215;</a>
 </div>
@@ -106,7 +67,6 @@
 <!-- JS TEMPLATE -->
 <script type="text/x-template" id="tags-tool-template">
 
-<<<<<<< HEAD
     <div class="row">
         <div class="small-8">
             <div class="row">
@@ -124,25 +84,6 @@
             </div>
         </div>
     </div>
-=======
-        <div class="row">
-            <div class="small-8">
-                <div class="row">
-                    <div class="small-3 columns">
-                        <label for="tags" class="right inline">Categorie</label>
-                    </div>
-                    <div class="small-9 columns">
-                        <select name="tags" id="tags-filter">
-                            <option value=''></option>
-                            <% _.each(tags, function(tag) { %>
-                            <option value="<%= tag %>"><%= tag %></option>
-                            <% }); %>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
->>>>>>> 3ccfadb7857aee0df2c91e01688a4aa06d737dd7
 
 </script>
 
@@ -150,7 +91,7 @@
     <ul class="links-list">
         <% _.each(links, function(link) { %>
         <li class="link-item">
-            <input type="checkbox" name="select"/>
+            <input type="checkbox" name="select" />
             <span class="label"><%= link.label %></span>
             <span class="tags">
                 <% if (link.tags) { _.each(link.tags.split(';'), function(tag) { %>
@@ -159,8 +100,7 @@
             </span>
 
             <span class="action">
-                <a href="" class="edit" data-link-id="<%= link._id %>">edit</a> | <a href="" class="delete"
-                                                                                     data-link-id="<%= link._id %>">Delete</a>
+                <a href="" class="edit" data-link-id="<%= link._id %>">edit</a> | <a href="" class="delete" data-link-id="<%= link._id %>">Delete</a>
             </span>
             <span class="link"><a target="_blank" href="<%= link.url %>"><%= link.url %></a></span>
         </li>
@@ -171,19 +111,18 @@
 </script>
 
 <script type="text/x-template" id="link-form-template">
-<<<<<<< HEAD
     <div class="reveal-modal" id="addModal">
         <form id="link-form" class="">
             <fieldset>
                 <% if (link._id) { %>
-                <input type="hidden" name="id" value="<%= link._id %>"/>
+                <input type="hidden" name="id" value="<%= link._id %>" />
                 <% } %>
                 <input type="text" id="label" name="label" value="<%= link.label %>" placeholder="Label"/>
                 <input type="text" id="url" name="url" value="<%= link.url %>" placeholder="Url"/>
-                <input type="text" id="tags" name="tags" value="<%= link.tags %>" placeholder="Tags"/>
+                <input type="text" id="tags" name="tags" value="<%= link.tags %>"  placeholder="Tags"/>
 
-                <input type="submit" value="add" class="pure-button pure-button-primary"/>
-                <input type="reset" value="cancel" class="pure-button "/>
+                <input type="submit" value="add" class="pure-button pure-button-primary" />
+                <input type="reset" value="cancel" class="pure-button " />
 
             </fieldset>
 
@@ -192,24 +131,6 @@
 </script>
 <script type="text/javascript">
     $(document).foundation();
-=======
-    <div class="">
-    <form id="link-form" class="pure-form">
-        <fieldset>
-            <% if (link._id) { %>
-                <input type="hidden" name="id" value="<%= link._id %>" />
-            <% } %>
-                <input type="text" id="label" name="label" value="<%= link.label %>" placeholder="Label"/>
-                <input type="text" id="url" name="url" value="<%= link.url %>" placeholder="Url"/>
-                <input type="text" id="tags" name="tags" value="<%= link.tags %>"  placeholder="Tags"/>
-
-                <input type="submit" value="add" class="pure-button pure-button-primary" />
-                <input type="reset" value="cancel" class="pure-button " />
-
-        </fieldset>
-    </div>
-    </form>
->>>>>>> 3ccfadb7857aee0df2c91e01688a4aa06d737dd7
 </script>
 </body>
 </html>
